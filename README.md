@@ -4,7 +4,7 @@ Nextcloud complicated client sync has never worked for me, so this program does 
 
 ## Getting Started
 
-This .NET Core program will does a simple one-way sync to a remote Nextcloud / WebDAV server.
+This .NET Core program will do a simple one-way sync to a remote Nextcloud / WebDAV server.
 
 It will ***not*** sync deletes to the remote server (e.g. this will never send a DELETE). This is intentional as syncing deletes is dangerous and should not be done. Clients can always do a full sync later on, but syncing unintentional deletes is not recoverable. 
 
