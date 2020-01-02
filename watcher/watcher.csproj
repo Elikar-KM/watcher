@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>dotnet-watcher-32A24FBB-035D-4CF0-84AC-FC7DD56DC040</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AsyncEnumerator" Version="4.0.2" />
+        <PackageReference Include="ConcurrentHashSet" Version="1.1.0" />
+        <PackageReference Include="Coravel" Version="3.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+        <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+        <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+        <PackageReference Include="System.Data.SQLite" Version="1.0.112" />
+        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
+        <PackageReference Include="System.Data.SQLite.EF6" Version="1.0.112" />
+        <PackageReference Include="System.IO.Abstractions" Version="7.1.1" />
+    </ItemGroup>
+</Project>
