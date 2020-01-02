@@ -23,19 +23,33 @@ What things you need to install the software and how to install them
 
 * Copy `watcher.db` to `~/`
 
-* Open `~/watcher.json` and change the `Auth` to your Nextcloud authentication key, e.g. the Nextcloud app password, `n31z7-myz1h-9xann-1a2Qz-93amk`, for user `foo` would be `"Auth": "foo:n31z7-myz1h-9xann-1a2Qz-93amk"`
+* In `~/watcher.json` 
 
-* Set `"Host": "https://cloud.userdomain.com/"` to your own Nextcloud domain.
+  * Change the `"Auth"` to your Nextcloud authentication key, e.g. the Nextcloud app password, `n31z7-myz1h-9xann-1a2Qz-93amk`, for user `foo` would be `"Auth": "foo:n31z7-myz1h-9xann-1a2Qz-93amk"`
 
-* This program assumes that you have a LAN endpoint for your Nextcloud to upload large (>100Mb) files, you can set this as `"HostLAN": "http://192.168.0.2:9999/"`. If you don't want this LAN setup, you can just set `"HostLAN"` to be the same as `"Host"`
+  * Set `"Host": "https://cloud.userdomain.com/"` to your own Nextcloud domain.
 
-* In appsettings.json, change `Data Source=/Users/lam/watcher.db` to `Data Source=/<path_to_your_home_directory>/watcher.db`
+  * This program assumes that you have a LAN endpoint for your Nextcloud to upload large (>100Mb) files, you can set this as `"HostLAN": "http://192.168.0.2:9999/"`. If you don't want this LAN setup, you can just set `"HostLAN"` to be the same as `"Host"`
+
+* In `appsettings.json`
+
+  * Change `Data Source=/Users/lam/watcher.db` to `Data Source=/<path_to_your_home_directory>/watcher.db`
  
-* In appsettings.json, change `"/Users/lam/watcher.json"` to `"/<path_to_your_home_directory>/watcher.json"`
+  * Change `"WatcherConfFilePath": "/Users/lam/watcher.json"` to `"WatcherConfFilePath": "/<path_to_your_home_directory>/watcher.json"`
 
-* In appsettings.json, change `"/Users/lam/watcher_log.txt"` to `"/<path_to_your_home_directory>/watcher_log.txt"`
+  * Change `"path": "/Users/lam/watcher_log.txt"` to `"path": "/<path_to_your_home_directory>/watcher_log.txt"`
 
-* Note that all paths should be full paths, *not* relative paths.
+  * Change `"WatchPath": "/Users/lam"` to be the local path that you want to watch.
+
+  * Change  `"RemoteRootFolder": "lam/laptop"` be the remote path that you want to upload to.
+
+  * Note that all local paths should be full paths, *not* relative paths.
+
+* Optional
+
+  * In `watcher.json`, `"RejectFilterPatterns"` contains regex patterns to ignore files. The default patterns are for Mac OS. You can add custom ignore patterns here.
+  
+  * In `appsettings.json`, `"RemapRemotePatterns"` contains mappings to change the default remote path for a given local path. An example is provided `appsettings.json`
 
 Inside the repository root:
 
@@ -43,7 +57,7 @@ Inside the repository root:
 dotnet run --project watcher
 ```
 
-and you can monitor the progress by looking at the ~/watcher_log.txt log files. The log files are automatically rotated once they reach 10Mb. A maximum of 5 total log files are kept.
+and you can monitor the progress by looking at the `~/watcher_log.txt` log files. The log files are automatically rotated once they reach 10Mb. A maximum of 5 total log files are kept.
 
 ## Notes
 
