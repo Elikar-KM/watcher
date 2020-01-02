@@ -24,7 +24,6 @@ namespace watcher.Infrastructure
         
         public void AddEvent(FileSystemEventArgs ev)
         {
-            // TODO: We need to check for directory rename events. We need to recursively get all the files / directories in case of rename. 
             try
             {
                 bool acquiredLock = this.rwLock.TryEnterReadLock(this.watcherOptions.EventsBufferLockTimeoutMs);
