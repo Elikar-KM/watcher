@@ -115,7 +115,7 @@ namespace watcher.Model
                 {
                     this.logger.LogInformation($"Updating {fsEvents.Count} events with first path = {fsEvents.First().FilePath}");
 
-//                    await using IDbContextTransaction transaction = await this.eventContext.Database.BeginTransactionAsync();
+                    await using IDbContextTransaction transaction = await this.eventContext.Database.BeginTransactionAsync();
 
                     foreach (FileSystemEvent fsEvent in fsEvents)
                     {
@@ -128,7 +128,7 @@ namespace watcher.Model
 
                     await this.eventContext.SaveChangesAsync();
 
-//                    await transaction.CommitAsync();
+                    await transaction.CommitAsync();
 
                     this.logger.LogInformation($"Successfully updated {fsEvents.Count} events with first path = {fsEvents.First().FilePath}");
                     
