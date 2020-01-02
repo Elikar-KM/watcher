@@ -31,7 +31,7 @@ What things you need to install the software and how to install them
 
   * This program assumes that you have a LAN endpoint for your Nextcloud to upload large (>100Mb) files, you can set this as `"HostLAN": "http://192.168.0.2:9999/"`. If you don't want this LAN setup, you can just set `"HostLAN"` to be the same as `"Host"`
 
-* In `appsettings.json`
+* In the repository `watcher/appsettings.json`
 
   * Change `Data Source=/Users/lam/watcher.db` to `Data Source=/<path_to_your_home_directory>/watcher.db`
  
