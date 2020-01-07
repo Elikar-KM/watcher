@@ -56,7 +56,7 @@ namespace watcher.Services
 
                 var jsonStream = this.fileSystem.File.OpenRead(this.watcherOptions.WatcherConfFilePath);
 
-                ICollection<string> filterPatterns = new List<string>();
+                var filterPatterns = new List<string>();
                 
                 using (JsonDocument jsonDocument = JsonDocument.Parse(jsonStream))
                 {
@@ -112,9 +112,9 @@ namespace watcher.Services
             ICollection<string> rejectFilterPatterns,
             long createdTimestamp)
         {
-            ISet<string> emittedPaths = new HashSet<string>();
+            var emittedPaths = new HashSet<string>();
 
-            List<FileSystemEvent> inflatedEvents = new List<FileSystemEvent>();
+            var inflatedEvents = new List<FileSystemEvent>();
 
             foreach (FileSystemEventArgs ev in renameEvents)
             {
@@ -179,7 +179,7 @@ namespace watcher.Services
                 yield break;
             }
             
-            Stack<string> stack = new Stack<string>();
+            var stack = new Stack<string>();
 
             stack.Push(initPath);
 
