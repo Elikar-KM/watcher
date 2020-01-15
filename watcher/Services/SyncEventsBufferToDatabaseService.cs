@@ -107,6 +107,13 @@ namespace watcher.Services
             }
         }
 
+        /// <summary>
+        /// Inflates rename events if they are interesting. File rename events are always inflated.
+        /// </summary>
+        /// <param name="renameEvents"></param>
+        /// <param name="rejectFilterPatterns"></param>
+        /// <param name="createdTimestamp"></param>
+        /// <returns></returns>
         private List<FileSystemEvent> InflateRenameEvents(
             IEnumerable<FileSystemEventArgs> renameEvents,
             ICollection<string> rejectFilterPatterns,
@@ -118,6 +125,18 @@ namespace watcher.Services
 
             foreach (FileSystemEventArgs ev in renameEvents)
             {
+                if (this.fileSystem.GetPathType(ev.FullPath) == PathType.File)
+                {
+                    inflatedEvents.Add(new FileSystemEvent
+                    {
+                        Processed = false,
+                        FilePath = ev.FullPath,
+                        CreatedTimestamp = createdTimestamp
+                    });
+
+                    continue;
+                }
+                
                 if (false == this.IsEventInteresting(ev.FullPath, emittedPaths, rejectFilterPatterns))
                 {
                     continue;
