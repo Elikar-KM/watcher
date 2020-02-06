@@ -24,9 +24,16 @@ namespace watcher
         {
             const string mutexName = @"Global\watcher";
 
-            var mutex = new Mutex(true, mutexName, out var createdNew);
+            try
+            {
+                var mutex = new Mutex(true, mutexName, out var createdNew);
 
-            if (!createdNew)
+                if (!createdNew)
+                {
+                    return;
+                }
+            }
+            catch (IOException)
             {
                 return;
             }
