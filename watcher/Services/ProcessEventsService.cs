@@ -130,7 +130,7 @@ namespace watcher.Services
             foreach (FileSystemEvent fsEvent in fsEvents)
             {
                 incrementTotalEvents();
-
+                
                 string eventPath = fsEvent.FilePath;
 
                 try
@@ -240,6 +240,8 @@ namespace watcher.Services
                         this.watcherOptions.RemapRemotePatterns[remapPattern]);
                 }
             }
+
+            eventRelativeRemotePath = eventRelativeRemotePath.Replace("\\", "_");
 
             Stream filestream = this.fileSystem.File.OpenRead(eventPath);
 
